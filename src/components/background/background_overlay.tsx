@@ -15,6 +15,7 @@ export default function BackgroundOverlay() {
         className="absolute -z-10"
         draggable={false}
         quality={65}
+        loading="lazy"
       />
     </div>
   );
