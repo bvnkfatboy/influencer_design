@@ -5,6 +5,9 @@ const nextConfig = {
       {
         hostname: "picsum.photos",
       },
+      {
+        hostname: "i.imgur.com",
+      },
     ],
     // unoptimized: true,
   },
