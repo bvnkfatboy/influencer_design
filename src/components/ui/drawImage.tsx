@@ -22,7 +22,7 @@ export default function DrawImage({
       width={width}
       height={height}
       loading={loading ? "lazy" : undefined}
-      priority={!loading}
+      priority={!loading ? true : undefined}
       quality={85}
       draggable={false}
     />
