@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BackgroundOverlay from "@/components/background_overlay";
+import BackgroundOverlay from "@/components/background/background_overlay";
 import Frame_1 from "@/assets/image/hompage/Frame1.png";
 import Frame_2 from "@/assets/image/hompage/Frame2.png";
 import SearchIcon from "@/assets/svg/search.svg";
@@ -43,15 +43,4 @@ export default function Home() {
       </div>
     </main>
   );
-}
-
-{
-  /* <main className="max-w-[1280px] mx-auto">
-<BackgroundOverlay />
-<div className="flex flex-col items-center sm:flex-row">
-  <div className="section-1 w-full sm:w-3/5">
-    <Image src={Home1} alt="section-1" layout="responsive" />
-  </div>
-</div>
-</main> */
 }
