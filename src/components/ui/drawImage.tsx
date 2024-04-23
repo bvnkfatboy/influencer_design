@@ -20,7 +20,7 @@ export default function DrawImage({
       width={width}
       height={height}
       priority={true}
-      quality={100}
+      quality={85}
       draggable={false}
     />
   );
