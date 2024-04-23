@@ -10,7 +10,7 @@ export default function BackgroundOverlay() {
         alt="bg"
         width={1920}
         height={3000}
-        priority={true}
+        priority
         className="absolute -z-10 object-cover"
         draggable={false}
         quality={65}
