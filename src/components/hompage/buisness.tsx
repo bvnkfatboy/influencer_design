@@ -43,6 +43,7 @@ export default function buisness() {
               className="h-auto max-w-full rounded-l"
               width={351}
               height={254}
+              loading={true}
             />
           </div>
         ))}

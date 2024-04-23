@@ -25,19 +25,24 @@ export default function Home() {
                 className="absolute right-0 top-0 mt-3 mr-4 "
               >
                 <div className="h-7 w-7 fill-current ">
-                  <DrawImage src={SearchIcon} width={240} height={240} />
+                  <DrawImage
+                    src={SearchIcon}
+                    width={240}
+                    height={240}
+                    loading={false}
+                  />
                 </div>
               </button>
             </form>
           </div>
         </div>
         <div className="section-1  min-[1024px]:mt-[5.5rem] min-[768px]:mt-[2rem] max-[425px]:mt-[2rem]">
-          <DrawImage src={Frame_1} width={1091} height={797} />
+          <DrawImage src={Frame_1} width={1091} height={797} loading={false} />
         </div>
       </div>
       <div className="flex justify-center items-center">
         <div className="section-2">
-          <DrawImage src={Frame_2} width={1166} height={652} />
+          <DrawImage src={Frame_2} width={1166} height={652} loading={false} />
           <Buisness />
         </div>
       </div>

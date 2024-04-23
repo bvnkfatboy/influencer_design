@@ -6,11 +6,13 @@ export default function DrawImage({
   className,
   width,
   height,
+  loading,
 }: {
   src: StaticImageData;
   className?: any;
   width: number;
   height: number;
+  loading: boolean;
 }) {
   return (
     <Image
@@ -19,7 +21,8 @@ export default function DrawImage({
       className={className}
       width={width}
       height={height}
-      priority
+      loading={loading ? "lazy" : undefined}
+      priority={!loading}
       quality={85}
       draggable={false}
     />
