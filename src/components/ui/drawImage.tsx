@@ -19,7 +19,8 @@ export default function DrawImage({
       className={className}
       width={width}
       height={height}
-      priority
+      priority={true}
+      quality={100}
       draggable={false}
     />
   );
