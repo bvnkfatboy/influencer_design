@@ -14,6 +14,7 @@ export default function BackgroundOverlay() {
         priority
         className="absolute -z-10"
         draggable={false}
+        quality={65}
       />
     </div>
   );
