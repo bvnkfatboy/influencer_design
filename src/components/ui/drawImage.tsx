@@ -21,7 +21,7 @@ export default function DrawImage({
       height={height}
       priority={true}
       quality={85}
-      //   loading="lazy"
+      loading="lazy"
       draggable={false}
     />
   );
