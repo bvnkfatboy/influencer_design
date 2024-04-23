@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import bg from "@/assets/svg/bg.svg";
+import bg from "../assets/svg/bg.svg";
 
 export default function BackgroundOverlay() {
   return (
