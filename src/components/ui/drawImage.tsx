@@ -19,7 +19,7 @@ export default function DrawImage({
       className={className}
       width={width}
       height={height}
-      unoptimized
+      priority
       draggable={false}
     />
   );

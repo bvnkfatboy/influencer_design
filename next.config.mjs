@@ -6,7 +6,7 @@ const nextConfig = {
         hostname: "picsum.photos",
       },
     ],
-    unoptimized: true,
+    // unoptimized: true,
   },
   reactStrictMode: true,
 };

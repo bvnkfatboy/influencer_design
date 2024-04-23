@@ -11,6 +11,7 @@ export default function BackgroundOverlay() {
         alt="bg"
         width={1920}
         height={3000}
+        priority
         className="absolute -z-10"
         draggable={false}
       />
