@@ -1,15 +1,16 @@
 import Image from "next/image";
-import BackgroundOverlay from "@/components/background/background_overlay";
-import Frame_1 from "@/assets/image/hompage/Frame1.png";
-import Frame_2 from "@/assets/image/hompage/Frame2.png";
+
+import Frame_1 from "@/assets/images/homepage/Frame1.png";
+import Frame_2 from "@/assets/images/homepage/Frame2.png";
 import SearchIcon from "@/assets/svg/search.svg";
-import DrawImage from "@/components/ui/drawImage";
-import Buisness from "@/components/hompage/buisness";
+import DrawImage from "@/components/utils/drawImage";
+import Buisness from "@/components/homepage/buisness";
+import Background from "@/components/background";
 
 export default function Home() {
   return (
     <main>
-      <BackgroundOverlay />
+      <Background />
       <div className="flex flex-col justify-center items-center sm:gap-x-12">
         <div className="relative mt-10 w-full max-w-[384px] max-[425px]:max-w-[350px]  sm:w-auto min-[1024px]:absolute min-[1024px]:left-[50%] min-[1024px]:top-[15%]">
           <div className="text-gray-600 search-infu">
@@ -30,6 +31,7 @@ export default function Home() {
                     width={240}
                     height={240}
                     loading={false}
+                    quality={65}
                   />
                 </div>
               </button>
@@ -37,12 +39,24 @@ export default function Home() {
           </div>
         </div>
         <div className="section-1  min-[1024px]:mt-[5.5rem] min-[768px]:mt-[2rem] max-[425px]:mt-[2rem]">
-          <DrawImage src={Frame_1} width={1091} height={797} loading={false} />
+          <DrawImage
+            src={Frame_1}
+            width={1091}
+            height={797}
+            loading={false}
+            quality={85}
+          />
         </div>
       </div>
       <div className="flex justify-center items-center">
         <div className="section-2">
-          <DrawImage src={Frame_2} width={1166} height={652} loading={false} />
+          <DrawImage
+            src={Frame_2}
+            width={1166}
+            height={652}
+            loading={false}
+            quality={85}
+          />
           <Buisness />
         </div>
       </div>

@@ -2,17 +2,16 @@
 import React from "react";
 import Image from "next/image";
 import bg from "@/assets/svg/background/bg.svg";
-export default function BackgroundOverlay() {
+import DrawImage from "./utils/drawImage";
+export default function Background() {
   return (
     <div className=" !bg-[#FFFAF1]">
-      <Image
+      <DrawImage
         src={bg}
-        alt="bg"
         width={1920}
         height={3000}
-        priority
+        loading={false}
         className="absolute -z-10 object-cover"
-        draggable={false}
         quality={65}
       />
     </div>

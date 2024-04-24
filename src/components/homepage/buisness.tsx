@@ -1,5 +1,5 @@
 import React from "react";
-import DrawImage from "@/components/ui/drawImage";
+import DrawImage from "@/components/utils/drawImage";
 import { StaticImageData } from "next/image";
 
 const data = [
@@ -44,6 +44,7 @@ export default function buisness() {
               width={351}
               height={254}
               loading={true}
+              quality={65}
             />
           </div>
         ))}
