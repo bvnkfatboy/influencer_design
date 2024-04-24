@@ -54,7 +54,7 @@ export default function Home() {
             src={Frame_2}
             width={1166}
             height={652}
-            loading={false}
+            loading={true}
             quality={85}
           />
           <Buisness />
