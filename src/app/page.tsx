@@ -15,7 +15,7 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center sm:gap-x-12">
         <div className="relative mt-10 w-full max-w-[384px] max-[425px]:max-w-[350px]  sm:w-auto min-[1024px]:absolute min-[1024px]:left-[50%] min-[1024px]:top-[7%]">
           <div className="text-gray-600 search-infu">
-            <form className="rounded-full p-2 bg-gradient-to-r from-[#8359b9] to-[#263ea0]">
+            <form className="rounded-full p-2 bg-gradient-to-r from-[#B179FC] to-[#6885F5]">
               <input
                 type="text"
                 name="serch"
@@ -39,7 +39,7 @@ export default function Home() {
             </form>
           </div>
         </div>
-        <div className="section-1  min-[1024px]:mt-[0rem] min-[768px]:mt-[2rem] max-[425px]:mt-[2rem]">
+        <div className="section-1  min-[1024px]:mt-[0rem] min-[768px]:mt-[0.5rem] max-[425px]:mt-[1rem]">
           <DrawImage
             src={Frame_1}
             width={1091}
