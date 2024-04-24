@@ -6,7 +6,8 @@ import SearchIcon from "@/assets/svg/search.svg";
 import DrawImage from "@/components/utils/drawImage";
 import Buisness from "@/components/homepage/buisness";
 import Background from "@/components/background";
-
+import { Link } from "@nextui-org/link";
+import SignUpIcon from "@/assets/svg/signup.svg";
 export default function Home() {
   return (
     <main>
@@ -46,6 +47,22 @@ export default function Home() {
             loading={false}
             quality={85}
           />
+        </div>
+        <div className="w-full flex justify-center">
+          <Link
+            href="#"
+            size="sm"
+            className="relative md:left-[10rem] lg:left-[13.5rem] xl:left-[15rem] 2xl:left-[14.5rem]"
+          >
+            <DrawImage
+              src={SignUpIcon}
+              width={195}
+              height={67}
+              loading={false}
+              quality={65}
+              className="object-cover"
+            />
+          </Link>
         </div>
       </div>
       <div className="flex justify-center items-center">
