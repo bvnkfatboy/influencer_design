@@ -38,7 +38,11 @@ import {
   Mail,
   Lock,
 } from "lucide-react";
+import DrawImage from "../utils/drawImage";
 
+import GoogleIcon from "@/assets/svg/icon/google.svg";
+import FacebookIcon from "@/assets/svg/icon/facebook.svg";
+import LineIcon from "@/assets/svg/icon/line.svg";
 export default function NavBar() {
   const menuItems = [
     {
@@ -155,43 +159,74 @@ export default function NavBar() {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1 text-center text-xl">
+                เข้าสู่ระบบ
+              </ModalHeader>
               <ModalBody>
                 <Input
                   autoFocus
                   endContent={<Mail size={24} />}
                   label="Email"
-                  placeholder="Enter your email"
+                  placeholder="กรอกอีเมลของคุณ"
                   variant="bordered"
                 />
                 <Input
                   endContent={<Lock size={24} />}
                   label="Password"
-                  placeholder="Enter your password"
+                  placeholder="กรอกรหัสผ่านของคุณ"
                   type="password"
                   variant="bordered"
                 />
-                <div className="flex py-2 px-1 justify-between">
-                  <Checkbox
-                    classNames={{
-                      label: "text-small",
-                    }}
-                  >
-                    Remember me
-                  </Checkbox>
+                <div className="flex py-1 px-1 justify-between">
                   <Link color="primary" href="#" size="sm">
-                    Forgot password?
+                    หากยังไม่มีบัญชี
+                  </Link>
+                  <Link color="primary" href="#" size="sm">
+                    ลืมรหัสผ่าน?
+                  </Link>
+                </div>
+                <Button color="primary" className="mb-2" onClick={onClose}>
+                  Sign in
+                </Button>
+                <div className="inline-flex items-center justify-center w-full">
+                  <hr className="w-64 h-px my-1 bg-gray-200 border-0 dark:bg-gray-700" />
+                  <span className="absolute px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-900">
+                    หรือ
+                  </span>
+                </div>
+                <div className="flex items-center justify-center gap-10 mb-10 mt-3">
+                  <Link href="#" size="sm">
+                    <DrawImage
+                      src={GoogleIcon}
+                      width={40}
+                      height={40}
+                      loading={true}
+                      quality={65}
+                      className="rounded-full"
+                    />
+                  </Link>
+                  <Link href="#" size="sm">
+                    <DrawImage
+                      src={FacebookIcon}
+                      width={40}
+                      height={40}
+                      loading={true}
+                      quality={65}
+                      className="rounded-full"
+                    />
+                  </Link>
+                  <Link href="#" size="sm">
+                    <DrawImage
+                      src={LineIcon}
+                      width={40}
+                      height={40}
+                      loading={true}
+                      quality={65}
+                      className="rounded-full"
+                    />
                   </Link>
                 </div>
               </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="flat" onPress={onClose}>
-                  Close
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Sign in
-                </Button>
-              </ModalFooter>
             </>
           )}
         </ModalContent>
