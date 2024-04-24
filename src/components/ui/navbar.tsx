@@ -126,7 +126,7 @@ export default function NavBar() {
           <Button
             onClick={onOpen}
             variant="solid"
-            className="bg-gradient-to-r from-[#B179FC] to-[#6885F5] text-white rounded-full"
+            className="bg-gradient-to-r from-[#8359b9] to-[#263ea0] text-white rounded-full"
           >
             เข้าสู่ระบบ
           </Button>
@@ -185,8 +185,12 @@ export default function NavBar() {
                     ลืมรหัสผ่าน?
                   </Link>
                 </div>
-                <Button color="primary" className="mb-2" onClick={onClose}>
-                  Sign in
+                <Button
+                  color="primary"
+                  className="mb-2 bg-gradient-to-r from-[#8359b9] to-[#263ea0] text-white rounded-full"
+                  onClick={onClose}
+                >
+                  เข้าสู่ระบบ
                 </Button>
                 <div className="inline-flex items-center justify-center w-full">
                   <hr className="w-64 h-px my-1 bg-gray-200 border-0 dark:bg-gray-700" />
