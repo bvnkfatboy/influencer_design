@@ -120,7 +120,7 @@ export default function NavBar() {
         </div>
         <NavbarItem className="z-100">
           <Button
-            onPress={onOpen}
+            onClick={onOpen}
             variant="solid"
             className="bg-gradient-to-r from-[#B179FC] to-[#6885F5] text-white rounded-full"
           >
