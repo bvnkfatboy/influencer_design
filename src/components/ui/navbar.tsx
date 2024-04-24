@@ -16,6 +16,18 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/dropdown";
+
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+  Checkbox,
+  Input,
+} from "@nextui-org/react";
+
 import {
   AppWindow,
   ChevronDown,
@@ -23,13 +35,34 @@ import {
   TimerReset,
   User2,
   Webhook,
+  Mail,
+  Lock,
 } from "lucide-react";
 
 export default function NavBar() {
-  const menuItems = ["docs", "features", "pricing", "blog"];
+  const menuItems = [
+    {
+      name: "หน้าแรก",
+      path: "/",
+    },
+    {
+      name: "ติดต่อ",
+      path: "/contact",
+    },
+    {
+      name: "รีวิว",
+      path: "/review",
+    },
+    {
+      name: "แพ็คเกจ",
+      path: "/package",
+    },
+  ];
+
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <Navbar isBlurred maxWidth="xl">
+    <Navbar isBlurred maxWidth="xl" className="bg-[hsla(259,31%,88%,0.6)]">
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle />
       </NavbarContent>
@@ -44,12 +77,131 @@ export default function NavBar() {
             Acme
           </span>
         </NavbarBrand>
-        <NavbarItem>
-          <Button as={Link} variant="light">
-            docs
+      </NavbarContent>
+      <NavbarContent justify="end">
+        <div className="hidden sm:flex ">
+          <NavbarItem>
+            <Button
+              as={Link}
+              href={menuItems[0].path}
+              className="text-md transition duration-300 hover:underline hover:underline-offset-4 hover:decoration-2 ease-in-out delay-150 bg-transparent"
+            >
+              {menuItems[0].name}
+            </Button>
+          </NavbarItem>
+
+          <NavbarItem>
+            <Button
+              as={Link}
+              href={menuItems[1].path}
+              className="text-md transition duration-300 hover:underline hover:underline-offset-4 hover:decoration-2 ease-in-out delay-150 bg-transparent"
+            >
+              {menuItems[1].name}
+            </Button>
+          </NavbarItem>
+          <NavbarItem>
+            <Button
+              as={Link}
+              href={menuItems[2].path}
+              className="text-md transition duration-300 hover:underline hover:underline-offset-4 hover:decoration-2 ease-in-out delay-150 bg-transparent"
+            >
+              {menuItems[2].name}
+            </Button>
+          </NavbarItem>
+          <NavbarItem>
+            <Button
+              as={Link}
+              href={menuItems[3].path}
+              className="text-md transition duration-300 hover:underline hover:underline-offset-4 hover:decoration-2 ease-in-out delay-150 bg-transparent"
+            >
+              {menuItems[3].name}
+            </Button>
+          </NavbarItem>
+        </div>
+        <NavbarItem className="z-100">
+          <Button
+            onPress={onOpen}
+            variant="solid"
+            className="bg-gradient-to-r from-[#B179FC] to-[#6885F5] text-white rounded-full"
+          >
+            เข้าสู่ระบบ
           </Button>
         </NavbarItem>
-        <NavbarItem>
+      </NavbarContent>
+      <NavbarMenu className="bg-[hsla(259,31%,88%,0.65)]">
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem
+            key={`${item.name}-${index}`}
+            className="transition duration-300 hover:text-blue-600"
+          >
+            <Link
+              className="w-full text-2xl"
+              href={item.path}
+              color="foreground"
+              underline="hover"
+            >
+              {item.name}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
+
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        placement="center"
+        backdrop="blur"
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
+              <ModalBody>
+                <Input
+                  autoFocus
+                  endContent={<Mail size={24} />}
+                  label="Email"
+                  placeholder="Enter your email"
+                  variant="bordered"
+                />
+                <Input
+                  endContent={<Lock size={24} />}
+                  label="Password"
+                  placeholder="Enter your password"
+                  type="password"
+                  variant="bordered"
+                />
+                <div className="flex py-2 px-1 justify-between">
+                  <Checkbox
+                    classNames={{
+                      label: "text-small",
+                    }}
+                  >
+                    Remember me
+                  </Checkbox>
+                  <Link color="primary" href="#" size="sm">
+                    Forgot password?
+                  </Link>
+                </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="flat" onPress={onClose}>
+                  Close
+                </Button>
+                <Button color="primary" onPress={onClose}>
+                  Sign in
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </Navbar>
+  );
+}
+
+{
+  /* <NavbarItem>
           <Dropdown>
             <DropdownTrigger>
               <Button endContent={<ChevronDown size={16} />} variant="light">
@@ -68,72 +220,47 @@ export default function NavBar() {
                 description="ACME scales apps to meet user demand, automagically, based on load."
                 startContent={<AppWindow size={24} />}
               >
-                Autoscaling
+                <Link href={`${menuItems[1].path}/autoscaling`}>
+                  Autoscaling
+                </Link>
               </DropdownItem>
               <DropdownItem
                 key="usage_metrics"
                 description="Real-time metrics to debug issues. Slow query added? We’ll show you exactly where."
                 startContent={<User2 size={24} />}
               >
-                Usage Metrics
+                <Link href={`${menuItems[1].path}/usage-metrics`}>
+                  Usage Metrics
+                </Link>
               </DropdownItem>
               <DropdownItem
                 key="production_ready"
                 description="ACME runs on ACME, join us and others serving requests at web scale."
                 startContent={<Webhook size={24} />}
               >
-                Production Ready
+                <Link href={`${menuItems[1].path}/production-ready`}>
+                  Production Ready
+                </Link>
               </DropdownItem>
               <DropdownItem
                 key="99_uptime"
                 description="Applications stay on the grid with high availability and high uptime guarantees."
                 startContent={<TimerReset size={24} />}
               >
-                +99% Uptime
+                <Link href={`${menuItems[1].path}/99-uptime`}>
+                  +99% Uptime
+                </Link>
               </DropdownItem>
               <DropdownItem
                 key="supreme_support"
                 description="Overcome any challenge with a supporting team ready to respond."
                 startContent={<Contact2 size={24} />}
               >
-                +Supreme Support
+                <Link href={`${menuItems[1].path}/supreme-support`}>
+                  +Supreme Support
+                </Link>
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} variant="light">
-            pricing
-          </Button>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} variant="light">
-            blog
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden sm:flex">
-          <Button
-            as={Link}
-            color="primary"
-            href="#"
-            variant="solid"
-            className="hidden sm:flex"
-          >
-            Get Started
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
-      <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link className="w-full" href="#" size="lg" color="foreground">
-              {item}
-            </Link>
-          </NavbarMenuItem>
-        ))}
-      </NavbarMenu>
-    </Navbar>
-  );
+        </NavbarItem> */
 }
