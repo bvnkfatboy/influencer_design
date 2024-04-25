@@ -58,7 +58,6 @@ export default function DynamicNavbar() {
       setError("");
       const res = await signIn(provider, {
         redirect: false,
-        callbackUrl: "/",
       });
       if (res?.error) {
         setError("อีเมลนี้เคยลงทะเบียนแล้ว โปรดลองใช้อีเมลอื่น");
