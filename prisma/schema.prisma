@@ -15,7 +15,7 @@ model User {
   image         String?
   userType  Type @default(influencer)
   userRole Role @default(USER)
-  detailProfile Profile @map("profile")
+  userProfile Profile @map("profile")
   accounts      Account[]
   sessions      Session[]
 
