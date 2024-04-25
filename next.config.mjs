@@ -31,6 +31,7 @@ const nextConfig = {
   },
   env: {
     SERVER_URL: "https://s5m884fj-8000.asse.devtunnels.ms/",
+    CLIENT_URL: "https://influencer-design.vercel.app/",
     AUTH_SECRET: "gEGsQQTyRs2ajJVyWH95hqj/XoelRKxt2fFmqQzc354=",
 
     FACEBOOK_CLIENT_ID: "789337913152138",
