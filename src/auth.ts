@@ -78,7 +78,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         // The URL to redirect the user to for authorization
         url: "https://www.facebook.com/v13.0/dialog/oauth",
         // The URL the user will be redirected to after the authorization flow
-        redirectUri: `${process.env.CLIENT_URL}api/auth/callback/facebook`,
+        redirectUri:
+          "https://influencer-design.vercel.app/api/auth/callback/facebook",
       },
       // @ts-ignore
       scope: "email",
