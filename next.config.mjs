@@ -34,8 +34,8 @@ const nextConfig = {
     CLIENT_URL: "https://influencer-design.vercel.app/",
     AUTH_SECRET: "gEGsQQTyRs2ajJVyWH95hqj/XoelRKxt2fFmqQzc354=",
 
-    FACEBOOK_CLIENT_ID: "789337913152138",
-    FACEBOOK_CLIENT_SECRET: "b803e671f66aefd943197531059411b5",
+    FACEBOOK_CLIENT_ID: "305996885927756",
+    FACEBOOK_CLIENT_SECRET: "b6b8062277196aae90dd7dc8dbae17da",
 
     GOOGLE_CLIENT_ID:
       "686619648224-ku4sh3jkuobjorcc2e3rg5o3mtmc3mgq.apps.googleusercontent.com",
