@@ -80,6 +80,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         // The URL the user will be redirected to after the authorization flow
         redirectUri: `${process.env.CLIENT_URL}api/auth/callback/facebook`,
       },
+      // @ts-ignore
+      scope: "email",
+      // @ts-ignore
+      http: false,
+      // @ts-ignore
+      pkce: true,
       async profile(profile) {
         // console.log(JSON.stringify(profile, null, 2))
         const provider = "Facebook";
