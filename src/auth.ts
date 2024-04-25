@@ -163,11 +163,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async session({ session, user, token }) {
       if (token) {
+        // @ts-ignore
         session.user = token.user;
       }
       return Promise.resolve(session);
     },
 
+    // @ts-ignore
     async signOut({ session, token }) {
       session = null;
       token = null;
