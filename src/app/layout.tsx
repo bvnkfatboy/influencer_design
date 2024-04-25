@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
 import "./globals.css";
-import { Providers } from "./providers";
+import { Providers } from "@/app/providers";
 const kanit = Kanit({ subsets: ["thai"], weight: "400" });
-import NavBar from "@/components/ui/navbar";
+import NavBar from "@/components/navbar";
 export const metadata: Metadata = {
   title: "Influencer Designs",
   description: "",
