@@ -36,7 +36,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      pkce: true,
       authorization: {
         url: "https://accounts.google.com/o/oauth2/v2/auth",
         params: {
@@ -81,9 +80,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         // The URL the user will be redirected to after the authorization flow
         redirectUri: `${process.env.CLIENT_URL}api/auth/callback/facebook`,
       },
-      scope: "email",
-      http: false,
-      pkce: true, // PKCE is disabled by default, but can be enabled with pkce: true
       async profile(profile) {
         // console.log(JSON.stringify(profile, null, 2))
         const provider = "Facebook";
