@@ -12,6 +12,16 @@ const config: Config = {
   },
   darkMode: "class",
 
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      layout: {
+        borderWidth: {
+          small: "1px", // border-small
+          medium: "1px", // border-medium
+          large: "2px", // border-large
+        },
+      },
+    }),
+  ],
 };
 export default config;
