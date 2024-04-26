@@ -18,6 +18,7 @@ import {
   Dropdown,
   DropdownMenu,
   Avatar,
+  CircularProgress,
 } from "@nextui-org/react";
 
 import { Mail, Lock } from "lucide-react";
@@ -136,13 +137,14 @@ export default function DynamicNavbar() {
                       type="submit"
                     >
                       {loading ? (
-                        <DrawImage
-                          src={LoadingGif}
-                          width={40}
-                          height={40}
-                          loading={true}
-                          quality={65}
-                          className="rounded-full"
+                        <CircularProgress
+                          classNames={{
+                            svg: "w-8 h-8 drop-shadow-md",
+                            indicator: "stroke-white",
+                            track: "stroke-white/10",
+                            value: "font-semibold text-white",
+                          }}
+                          aria-label="Loading..."
                         />
                       ) : (
                         "เข้าสู่ระบบ"
@@ -232,12 +234,18 @@ export default function DynamicNavbar() {
             <p className="font-semibold">{session.user.name}</p>
             <p className="font-semibold">{session.user.email}</p>
           </DropdownItem>
-          <DropdownItem key="settings">My Settings</DropdownItem>
-          <DropdownItem key="team_settings">Team Settings</DropdownItem>
-          <DropdownItem key="analytics">Analytics</DropdownItem>
-          <DropdownItem key="system">System</DropdownItem>
-          <DropdownItem key="configurations">Configurations</DropdownItem>
-          <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+          <DropdownItem
+            key="profile_page"
+            onClick={() => router.push("/profile")}
+          >
+            หน้าโปรไฟล์
+          </DropdownItem>
+          <DropdownItem key="job_page" onClick={() => router.push("/myjob")}>
+            งานของฉัน
+          </DropdownItem>
+          <DropdownItem key="chat_page" onClick={() => router.push("/chat")}>
+            แชทสนทนา
+          </DropdownItem>
           <DropdownItem
             key="logout"
             color="danger"

@@ -9,6 +9,7 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/link";
+import { Badge } from "@nextui-org/react";
 import { Button } from "@nextui-org/button";
 import {
   Dropdown,
@@ -16,9 +17,14 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/dropdown";
+import { useSession, signOut, signIn } from "next-auth/react";
 
 import DynamicNavbar from "@/components/ui/dynamicnavbar";
+import { NotificationIcon } from "@/components/icon/notificationicon";
+import { useRouter } from "next/navigation";
 export default function NavBar() {
+  const { data: session } = useSession();
+  const router = useRouter();
   const menuItems = [
     {
       name: "หน้าแรก",
@@ -35,6 +41,17 @@ export default function NavBar() {
     {
       name: "แพ็คเกจ",
       path: "/package",
+    },
+  ];
+
+  const sessionItems = [
+    {
+      name: "หน้าแรก",
+      path: "/",
+    },
+    {
+      name: "งานของฉัน",
+      path: "/myjob",
     },
   ];
 
@@ -57,44 +74,45 @@ export default function NavBar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <div className="hidden sm:flex ">
-          <NavbarItem>
-            <Button
-              as={Link}
-              href={menuItems[0].path}
-              className="text-md transition duration-300 hover:underline hover:underline-offset-4 hover:decoration-2 ease-in-out delay-150 bg-transparent"
-            >
-              {menuItems[0].name}
-            </Button>
-          </NavbarItem>
-
-          <NavbarItem>
-            <Button
-              as={Link}
-              href={menuItems[1].path}
-              className="text-md transition duration-300 hover:underline hover:underline-offset-4 hover:decoration-2 ease-in-out delay-150 bg-transparent"
-            >
-              {menuItems[1].name}
-            </Button>
-          </NavbarItem>
-          <NavbarItem>
-            <Button
-              as={Link}
-              href={menuItems[2].path}
-              className="text-md transition duration-300 hover:underline hover:underline-offset-4 hover:decoration-2 ease-in-out delay-150 bg-transparent"
-            >
-              {menuItems[2].name}
-            </Button>
-          </NavbarItem>
-          <NavbarItem>
-            <Button
-              as={Link}
-              href={menuItems[3].path}
-              className="text-md transition duration-300 hover:underline hover:underline-offset-4 hover:decoration-2 ease-in-out delay-150 bg-transparent"
-            >
-              {menuItems[3].name}
-            </Button>
-          </NavbarItem>
+          {session
+            ? sessionItems.map((item, index) => (
+                <NavbarItem key={index}>
+                  <Button
+                    as={Link}
+                    href={item.path}
+                    className="text-md transition duration-300 hover:underline hover:underline-offset-4 hover:decoration-2 ease-in-out delay-150 bg-transparent"
+                  >
+                    {item.name}
+                  </Button>
+                </NavbarItem>
+              ))
+            : menuItems.map((item, index) => (
+                <NavbarItem key={index}>
+                  <Button
+                    as={Link}
+                    href={item.path}
+                    className="text-md transition duration-300 hover:underline hover:underline-offset-4 hover:decoration-2 ease-in-out delay-150 bg-transparent"
+                  >
+                    {item.name}
+                  </Button>
+                </NavbarItem>
+              ))}
         </div>
+        {session ? (
+          <NavbarItem>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                router.push("/chat");
+              }}
+              className="text-md  bg-transparent p-0 m-0"
+            >
+              <Badge color="danger" content={5} shape="circle">
+                <NotificationIcon size={24} />
+              </Badge>
+            </Button>
+          </NavbarItem>
+        ) : null}
         <NavbarItem className="z-100">
           <DynamicNavbar />
         </NavbarItem>
