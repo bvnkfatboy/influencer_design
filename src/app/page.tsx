@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 
 import Frame_1 from "@/assets/images/homepage/Frame1.png";
@@ -8,6 +9,7 @@ import Buisness from "@/components/homepage/buisness";
 import Background from "@/components/background";
 import { Link } from "@nextui-org/link";
 import SignUpIcon from "@/assets/svg/signup.svg";
+import { motion } from "framer-motion";
 export default function Home() {
   return (
     <main>
@@ -27,13 +29,19 @@ export default function Home() {
                 className="absolute right-0 top-0 mt-3 mr-4 "
               >
                 <div className="h-7 w-7 fill-current ">
-                  <DrawImage
-                    src={SearchIcon}
-                    width={240}
-                    height={240}
-                    loading={false}
-                    quality={65}
-                  />
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <DrawImage
+                      src={SearchIcon}
+                      width={240}
+                      height={240}
+                      loading={false}
+                      quality={65}
+                    />
+                  </motion.div>
                 </div>
               </button>
             </form>
@@ -49,20 +57,26 @@ export default function Home() {
           />
         </div>
         <div className="w-full flex justify-center">
-          <Link
-            href="/register"
-            size="sm"
-            className="relative md:left-[10rem] lg:left-[13.5rem] xl:left-[15rem] 2xl:left-[14.5rem] md:-mt-5"
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 100, damping: 10 }}
           >
-            <DrawImage
-              src={SignUpIcon}
-              width={195}
-              height={67}
-              loading={false}
-              quality={65}
-              className="object-cover"
-            />
-          </Link>
+            <Link
+              href="/register"
+              size="sm"
+              className="relative md:left-[10rem] lg:left-[13.5rem] xl:left-[15rem] 2xl:left-[14.5rem] md:-mt-5"
+            >
+              <DrawImage
+                src={SignUpIcon}
+                width={195}
+                height={67}
+                loading={false}
+                quality={65}
+                className="object-cover"
+              />
+            </Link>
+          </motion.div>
         </div>
       </div>
       <div className="flex justify-center items-center">

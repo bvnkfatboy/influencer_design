@@ -43,6 +43,7 @@ export default function buisness() {
           <div key={index} className="">
             <motion.div
               whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.9 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <DrawImage

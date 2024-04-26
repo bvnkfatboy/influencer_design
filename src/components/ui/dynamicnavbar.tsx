@@ -25,6 +25,7 @@ import { Mail, Lock } from "lucide-react";
 import GoogleIcon from "@/assets/svg/icon/google.svg";
 import FacebookIcon from "@/assets/svg/icon/facebook.svg";
 import LineIcon from "@/assets/svg/icon/line.svg";
+import LoadingGif from "@/assets/gif/loading.gif";
 import DrawImage from "@/components/utils/drawImage";
 import { useRouter, redirect } from "next/navigation";
 export default function DynamicNavbar() {
@@ -34,17 +35,20 @@ export default function DynamicNavbar() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     try {
       setError("");
+      setLoading(true);
       const res = await signIn("credentials", {
         email,
         password,
         redirect: false,
       });
       if (res?.error) {
+        setLoading(false);
         setError("อีเมล หรือ รหัสผ่านไม่ถูกต้อง");
         return;
       }
@@ -118,19 +122,31 @@ export default function DynamicNavbar() {
                       value={password}
                     />
                     <div className="flex py-1 px-1 justify-between">
-                      <Link color="primary" href="#" size="sm">
+                      <Link color="primary" href="/register" size="sm">
                         หากยังไม่มีบัญชี
                       </Link>
                       <Link color="primary" href="#" size="sm">
                         ลืมรหัสผ่าน?
                       </Link>
                     </div>
+
                     <Button
                       color="primary"
                       className="mb-2 bg-gradient-to-r from-[#B179FC] to-[#6885F5] text-white rounded-full w-full"
                       type="submit"
                     >
-                      เข้าสู่ระบบ
+                      {loading ? (
+                        <DrawImage
+                          src={LoadingGif}
+                          width={40}
+                          height={40}
+                          loading={true}
+                          quality={65}
+                          className="rounded-full"
+                        />
+                      ) : (
+                        "เข้าสู่ระบบ"
+                      )}
                     </Button>
                   </form>
 
