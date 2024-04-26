@@ -246,6 +246,7 @@ export default function DynamicNavbar() {
           <DropdownItem key="chat_page" onClick={() => router.push("/chat")}>
             แชทสนทนา
           </DropdownItem>
+
           <DropdownItem
             key="logout"
             color="danger"

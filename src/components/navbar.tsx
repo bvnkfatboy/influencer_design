@@ -53,6 +53,10 @@ export default function NavBar() {
       name: "งานของฉัน",
       path: "/myjob",
     },
+    {
+      name: "เติมเงิน",
+      path: "/topup",
+    },
   ];
 
   return (
