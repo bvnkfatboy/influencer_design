@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: "",
 };
 
+import Transition from "@/components/utils/transition";
+
 export default function RootLayout({
   children,
 }: {
@@ -19,7 +21,7 @@ export default function RootLayout({
       <body className={kanit.className}>
         <Providers>
           <NavBar />
-          {children}
+          <Transition>{children}</Transition>
         </Providers>
       </body>
     </html>

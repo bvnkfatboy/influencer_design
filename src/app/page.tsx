@@ -50,7 +50,7 @@ export default function Home() {
         </div>
         <div className="w-full flex justify-center">
           <Link
-            href="#"
+            href="/register"
             size="sm"
             className="relative md:left-[10rem] lg:left-[13.5rem] xl:left-[15rem] 2xl:left-[14.5rem] md:-mt-5"
           >
