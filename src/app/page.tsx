@@ -17,7 +17,10 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center sm:gap-x-12">
         <div className="relative mt-10 w-full max-w-[384px] max-[425px]:max-w-[350px]  sm:w-auto min-[1024px]:absolute min-[1024px]:left-[50%] min-[1024px]:top-[7%]">
           <div className="text-gray-600 search-infu">
-            <form className="rounded-full p-2 bg-gradient-to-r from-[#B179FC] to-[#6885F5]">
+            <form
+              action="/search/"
+              className="rounded-full p-2 bg-gradient-to-r from-[#B179FC] to-[#6885F5]"
+            >
               <input
                 type="text"
                 name="serch"

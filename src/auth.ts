@@ -15,24 +15,44 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
       credentials: {
-        email: {},
-        password: {},
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
       },
 
+      // @ts-ignore
       authorize: async (credentials) => {
-        try {
-          const { data: user } = await apiRequest.post("api/auth/login", {
-            email: credentials?.email,
-            password: credentials?.password,
-          });
-          if (user) {
-            return user;
-          } else {
-            return null;
-          }
-        } catch (error: any) {}
+        // try {
+        //   const { data: user } = await apiRequest.post("api/auth/login", {
+        //     email: credentials?.email,
+        //     password: credentials?.password,
+        //   });
+        //   if (user) {
+        //     return user;
+        //   } else {
+        //     return null;
+        //   }
+        // } catch (error: any) {
+
+        // }
+        const user = {
+          id: "1",
+          name: "J Smith",
+          email: credentials?.email,
+          password: credentials?.password,
+          image: "https://i.imgur.com/QDN1420.png",
+        };
+
+        if (
+          credentials?.email === user.email &&
+          credentials?.password === user.password
+        ) {
+          return user;
+        } else {
+          return null;
+        }
       },
     }),
+
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
