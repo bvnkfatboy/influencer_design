@@ -188,7 +188,7 @@ export default function SearchPage() {
               key={index}
               isPressable
               className="flex flex-col"
-              onPress={() => router.push(`/product/`)}
+              onPress={() => router.push(`/user/`)}
             >
               <CardHeader className="overflow-visible p-0 max-w-[425px]">
                 <Image

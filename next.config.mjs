@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -23,6 +24,12 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "profile.line-scdn.net",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
         port: "",
         pathname: "/**",
       },
