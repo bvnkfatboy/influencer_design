@@ -66,31 +66,40 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           response_type: "code",
         },
       },
+      // @ts-ignore
       async profile(profile) {
         const provider = "Google";
-        const { data: user } = await apiRequest.post("/api/auth/social/find", {
+
+        return {
+          id: profile.sub,
+          name: profile.name,
           email: profile.email,
-        });
-        if (!user) {
-          const newUser = {
-            email: profile.email,
-            name: profile.name,
-            image: profile.picture,
-            socialId: profile.sub,
-            provider: provider,
-          };
-          const { data: user } = await apiRequest.post(
-            "/api/auth/social/create",
-            newUser
-          );
-          return Promise.resolve(user);
-        } else {
-          if (user && user.provider == provider) {
-            return Promise.resolve(user);
-          } else {
-            return Promise.resolve(null);
-          }
-        }
+          image: profile.picture,
+          // provider: provider,
+        };
+        // const { data: user } = await apiRequest.post("/api/auth/social/find", {
+        //   email: profile.email,
+        // });
+        // if (!user) {
+        //   const newUser = {
+        //     email: profile.email,
+        //     name: profile.name,
+        //     image: profile.picture,
+        //     socialId: profile.sub,
+        //     provider: provider,
+        //   };
+        //   const { data: user } = await apiRequest.post(
+        //     "/api/auth/social/create",
+        //     newUser
+        //   );
+        //   return Promise.resolve(user);
+        // } else {
+        //   if (user && user.provider == provider) {
+        //     return Promise.resolve(user);
+        //   } else {
+        //     return Promise.resolve(null);
+        //   }
+        // }
       },
     }),
     Facebook({
@@ -108,32 +117,40 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       http: false,
       // @ts-ignore
       pkce: true,
+      //@ts-ignore
       async profile(profile) {
         // console.log(JSON.stringify(profile, null, 2))
         const provider = "Facebook";
-        const { data: user } = await apiRequest.post("/api/auth/social/find", {
+        return {
+          id: profile.id,
+          name: profile.name,
           email: profile.email,
-        });
-        if (!user) {
-          const newUser = {
-            socialId: profile.id,
-            name: profile.name,
-            email: profile.email,
-            image: profile.picture.data.url,
-            provider: provider,
-          };
-          const { data: user } = await apiRequest.post(
-            "/api/auth/social/create",
-            newUser
-          );
-          return Promise.resolve(user);
-        } else {
-          if (user && user.provider == provider) {
-            return Promise.resolve(user);
-          } else {
-            return Promise.resolve(null);
-          }
-        }
+          image: profile.picture.data.url,
+          // provider: provider,
+        };
+        // const { data: user } = await apiRequest.post("/api/auth/social/find", {
+        //   email: profile.email,
+        // });
+        // if (!user) {
+        //   const newUser = {
+        //     socialId: profile.id,
+        //     name: profile.name,
+        //     email: profile.email,
+        //     image: profile.picture.data.url,
+        //     provider: provider,
+        //   };
+        //   const { data: user } = await apiRequest.post(
+        //     "/api/auth/social/create",
+        //     newUser
+        //   );
+        //   return Promise.resolve(user);
+        // } else {
+        //   if (user && user.provider == provider) {
+        //     return Promise.resolve(user);
+        //   } else {
+        //     return Promise.resolve(null);
+        //   }
+        // }
       },
     }),
 
@@ -149,33 +166,41 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           state: "d5c9b7b1-9d5f-4a3e-9b5d-8f1e4b9c5d6f",
         },
       },
+      //@ts-ignore
       async profile(profile) {
         const provider = "Line";
-        const { data: user } = await apiRequest.post("/api/auth/social/find", {
+        return {
+          id: profile.sub,
+          name: profile.name,
           email: profile.email,
-        });
-        if (!user) {
-          const newUser = {
-            socialId: profile.sub,
-            name: profile.name,
-            email: profile.email,
-            image: profile.picture,
-            provider: provider,
-          };
-          // console.log(JSON.stringify(newUser, null, 2));
+          image: profile.picture,
+          // provider: provider,
+        };
+        // const { data: user } = await apiRequest.post("/api/auth/social/find", {
+        //   email: profile.email,
+        // });
+        // if (!user) {
+        //   const newUser = {
+        //     socialId: profile.sub,
+        //     name: profile.name,
+        //     email: profile.email,
+        //     image: profile.picture,
+        //     provider: provider,
+        //   };
+        //   // console.log(JSON.stringify(newUser, null, 2));
 
-          const { data: user } = await apiRequest.post(
-            "/api/auth/social/create",
-            newUser
-          );
-          return Promise.resolve(user);
-        } else {
-          if (user && user.provider == provider) {
-            return Promise.resolve(user);
-          } else {
-            return Promise.resolve(null);
-          }
-        }
+        //   const { data: user } = await apiRequest.post(
+        //     "/api/auth/social/create",
+        //     newUser
+        //   );
+        //   return Promise.resolve(user);
+        // } else {
+        //   if (user && user.provider == provider) {
+        //     return Promise.resolve(user);
+        //   } else {
+        //     return Promise.resolve(null);
+        //   }
+        // }
       },
     }),
   ],
