@@ -6,6 +6,8 @@ import Facebook from "next-auth/providers/facebook";
 import Google from "next-auth/providers/google";
 import Line from "next-auth/providers/line";
 import { image } from "@nextui-org/react";
+import { useRouter, redirect } from "next/navigation";
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   debug: false,
   secret: process.env.AUTH_SECRET,
@@ -222,12 +224,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return Promise.resolve(session);
     },
 
-    // @ts-ignore
+    //@ts-ignore
     async signOut({ session, token }) {
       session = null;
       token = null;
-
-      return Promise.resolve([session, token]);
+      // const Router = useRouter();
+      redirect("/");
+      return [Promise.resolve([session, token])];
     },
   },
 });

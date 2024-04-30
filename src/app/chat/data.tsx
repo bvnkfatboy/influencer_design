@@ -1,115 +1,112 @@
-const thaiWords = [
-  "สวัสดี",
-  "นี่คือ",
-  "ฉันชื่อ",
-  "แล้ว",
-  "สวัสดีครับ",
-  "คุณชื่ออะไร",
-  "ยินดีต่อ",
-  "เราเห็น",
-  "บทเรียนที่",
-  "อ่านหนังสือเรื่อง",
-  "ดีที่ไหน",
-  "เรื่อง",
-  "ถ้า",
-  "เราสามารถ",
-  "ถ้าเรา",
-  "สามารถ",
-  "แล้วทำได้",
-  "การเรียน",
-  "อยากเรียน",
-  "อยาก",
-  "สอบ",
-  "ถ้าเรา",
-  "เรียน",
-  "อย่าง",
-  "ดี",
-  "ง่าย",
-  "ทำได้",
-  "เรา",
-  "สามารถ",
-  "ทำได้",
-  "เรียน",
-  "อย่าง",
-  "ดี",
-  "สบาย",
-  "เรา",
-  "สามารถ",
-  "ทำได้",
-  "หาก",
-  "เรา",
-  "สามารถ",
-  "ทำได้",
-  "เรียน",
-  "อย่าง",
-  "ดี",
-  "ง่าย",
-  "ทำได้",
-  "เรา",
-  "สามารถ",
-  "ทำได้",
-  "เรียน",
-  "อย่าง",
-  "ดี",
-  "ง่าย",
-  "ทำได้",
-];
-
-const userNames = [
-  "กว่าดุ",
-  "กินงง",
-  "กินงงแมว",
-  "ต้นหนา",
-  "ตะกร้า",
-  "แมวเย็น",
-  "แมวเย็นคนหนึ่ง",
-  "แมวเย็นคนสอง",
-  "แมวเย็นคนสาม",
-  "แมวเย็นคนสี่",
+const names = [
+  "กรกฤต",
+  "ชวัทดา",
+  "ชัชวิฐ",
+  "ชาญสุวรรณ",
+  "ณัฐวิชชช",
+  "ณัฐวิชญา",
+  "ณัฐวิชญิต",
+  "ณัฐวิชยุทธ",
+  "ณัฐวิชรัตน์",
+  "ณัฐวิชวุฒิ",
 ];
 
 const randomUserName = () => {
-  const index = Math.floor(Math.random() * userNames.length);
-  return userNames[index];
+  const index = Math.floor(Math.random() * names.length);
+  return names[index];
 };
 
-const randomThaiWord = () => {
-  const index = Math.floor(Math.random() * thaiWords.length);
-  return thaiWords[index];
-};
-
-const randomBobMessage = () => {
-  const index = Math.floor(Math.random() * thaiWords.length);
-  return `${thaiWords[index]} ${thaiWords[index]}`;
-};
-
-const Massages = Array.from({ length: 10 }, (_, i) => ({
-  id: `${i + 1}`,
-  send: randomUserName(),
-  recive: "Bob",
-  detail: Array.from({ length: Math.floor(Math.random() * 5) + 1 }, (_, j) => ({
-    id: `${i + 1}-${j + 1}`,
-    message:
-      j % 2 === 0
-        ? `${randomThaiWord()} ${randomThaiWord()}`
-        : randomBobMessage(),
-    sendby: randomUserName(),
-    reciveby: "Bob",
-    date: new Date(
-      new Date().getTime() -
-        Math.floor(Math.random() * 10) * 24 * 60 * 60 * 1000
-    )
-      .toISOString()
-      .slice(0, 10),
-  })).sort((a, b) => (a.id > b.id ? 1 : -1)),
-})).map((message) => {
-  message.detail = message.detail.map((detail) => {
-    if (detail.sendby === "Bob") {
-      detail.message = `อ่านหนังสือเรื่อง${detail.message}`;
-    }
-    return detail;
-  });
-  return message;
-});
+const Massages = [
+  {
+    id: "1",
+    send: randomUserName(),
+    recive: "Bob",
+    detail: [
+      {
+        id: "1",
+        message: "สวัสดี",
+        sendby: randomUserName(),
+        reciveby: "Bob",
+        date: "2022-01-01",
+      },
+      {
+        id: "2",
+        message: "สวัสดี",
+        sendby: "Bob",
+        reciveby: randomUserName(),
+        date: "2022-01-02",
+      },
+      {
+        id: "3",
+        name: randomUserName(),
+        message: "สวัสดี",
+        sendby: randomUserName(),
+        reciveby: "Bob",
+        date: "2022-01-03",
+      },
+      {
+        id: "4",
+        name: "Bob",
+        message: "สวัสดี",
+        sendby: randomUserName(),
+        reciveby: "Bob",
+        date: "2022-01-04",
+      },
+      {
+        id: "5",
+        name: randomUserName(),
+        message: "สวัสดี",
+        sendby: randomUserName(),
+        reciveby: "Bob",
+        date: "2022-01-04",
+      },
+    ].sort((a, b) => (a.id > b.id ? 1 : -1)),
+  },
+  {
+    id: "2",
+    send: randomUserName(),
+    recive: "Bob",
+    detail: [
+      {
+        id: "6",
+        message: "สวัสดี",
+        sendby: randomUserName(),
+        reciveby: "Bob",
+        date: "2022-01-05",
+      },
+      {
+        id: "7",
+        message: "สวัสดี",
+        sendby: "Bob",
+        reciveby: randomUserName(),
+        date: "2022-01-06",
+      },
+      {
+        id: "8",
+        name: randomUserName(),
+        message: "สวัสดี",
+        sendby: randomUserName(),
+        reciveby: "Bob",
+        date: "2022-01-07",
+      },
+      {
+        id: "9",
+        name: "Bob",
+        message: "สวัสดี",
+        sendby: randomUserName(),
+        reciveby: "Bob",
+        date: "2022-01-08",
+      },
+      {
+        id: "10",
+        name: randomUserName(),
+        message: "สวัสดี",
+        sendby: randomUserName(),
+        reciveby: "Bob",
+        date: "2022-01-08",
+      },
+    ].sort((a, b) => (a.id > b.id ? 1 : -1)),
+  },
+];
 
 export default Massages;

@@ -29,6 +29,7 @@ import LineIcon from "@/assets/svg/icon/line.svg";
 import LoadingGif from "@/assets/gif/loading.gif";
 import DrawImage from "@/components/utils/drawImage";
 import { useRouter, redirect } from "next/navigation";
+
 export default function DynamicNavbar() {
   const { data: session } = useSession();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -37,6 +38,7 @@ export default function DynamicNavbar() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isLoginOpen, setisLoginOpen] = useState(false);
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
@@ -79,6 +81,7 @@ export default function DynamicNavbar() {
         <Button
           onClick={() => {
             setError("");
+            setisLoginOpen(true);
             onOpen();
           }}
           variant="solid"
@@ -231,8 +234,8 @@ export default function DynamicNavbar() {
         </DropdownTrigger>
         <DropdownMenu aria-label="Profile Actions" variant="flat">
           <DropdownItem key="profile" className="h-14 gap-2">
-            <p className="font-semibold">{session.user.name}</p>
-            <p className="font-semibold">{session.user.email}</p>
+            <p className="font-semibold">{session?.user?.name}</p>
+            <p className="font-semibold">{session?.user?.email}</p>
           </DropdownItem>
           <DropdownItem
             key="profile_page"
@@ -252,8 +255,10 @@ export default function DynamicNavbar() {
             color="danger"
             onClick={() => {
               signOut({
-                redirect: false,
+                redirect: true,
+                callbackUrl: "/",
               });
+              setisLoginOpen(false);
             }}
           >
             ออกจากระบบ
