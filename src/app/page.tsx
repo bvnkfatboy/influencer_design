@@ -10,7 +10,10 @@ import Background from "@/components/background";
 import { Link } from "@nextui-org/link";
 import SignUpIcon from "@/assets/svg/signup.svg";
 import { motion } from "framer-motion";
+import CampaignIcon from "@/assets/svg/campaign.svg";
+import { useSession } from "next-auth/react";
 export default function Home() {
+  const { data: session } = useSession();
   return (
     <main>
       <Background />
@@ -65,20 +68,37 @@ export default function Home() {
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 100, damping: 10 }}
           >
-            <Link
-              href="/register"
-              size="sm"
-              className="relative md:left-[10rem] lg:left-[13.5rem] xl:left-[15rem] 2xl:left-[14.5rem] md:-mt-5"
-            >
-              <DrawImage
-                src={SignUpIcon}
-                width={195}
-                height={67}
-                loading={false}
-                quality={65}
-                className="object-cover"
-              />
-            </Link>
+            {!session ? (
+              <Link
+                href="/register"
+                size="sm"
+                className="relative md:left-[10rem] lg:left-[13.5rem] xl:left-[15rem] 2xl:left-[14.5rem] md:-mt-5"
+              >
+                <DrawImage
+                  src={SignUpIcon}
+                  width={195}
+                  height={67}
+                  loading={false}
+                  quality={65}
+                  className="object-cover"
+                />
+              </Link>
+            ) : (
+              <Link
+                href="/"
+                size="sm"
+                className="relative md:left-[10rem] lg:left-[13.5rem] xl:left-[15rem] 2xl:left-[14.5rem] md:-mt-5"
+              >
+                <DrawImage
+                  src={CampaignIcon}
+                  width={254}
+                  height={63}
+                  loading={false}
+                  quality={65}
+                  className="object-cover"
+                />
+              </Link>
+            )}
           </motion.div>
         </div>
       </div>

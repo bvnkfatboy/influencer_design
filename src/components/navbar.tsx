@@ -22,6 +22,7 @@ import { useSession, signOut, signIn } from "next-auth/react";
 import DynamicNavbar from "@/components/ui/dynamicnavbar";
 import { NotificationIcon } from "@/components/icon/notificationicon";
 import { useRouter } from "next/navigation";
+import { MessageCircle, Bell, Megaphone, BellRing } from "lucide-react";
 export default function NavBar() {
   const { data: session } = useSession();
   const router = useRouter();
@@ -59,6 +60,20 @@ export default function NavBar() {
     },
   ];
 
+  const messageItems = [
+    {
+      title: "แจ้งเตือน",
+      description: "มีงานใหม่สามารถดูได้",
+    },
+    {
+      title: "แจ้งเตือน",
+      description: "มีลูกค้าติดตามคุณ",
+    },
+    {
+      title: "แจ้งเตือน",
+      description: "มีลูกค้าถูกใจโปรไฟล์คุณ",
+    },
+  ];
   return (
     <Navbar isBlurred maxWidth="xl" className="bg-[hsla(259,31%,88%,0.6)]">
       <NavbarContent className="sm:hidden" justify="start">
@@ -103,19 +118,45 @@ export default function NavBar() {
               ))}
         </div>
         {session ? (
-          <NavbarItem>
-            <Button
-              onClick={(e) => {
-                e.preventDefault();
-                router.push("/chat");
-              }}
-              className="text-md  bg-transparent p-0 m-0"
-            >
-              <Badge color="danger" content={5} shape="circle">
-                <NotificationIcon size={24} />
-              </Badge>
-            </Button>
-          </NavbarItem>
+          <div className="flex flex-row">
+            <NavbarItem>
+              <Dropdown placement="bottom-end">
+                <DropdownTrigger>
+                  <Button>
+                    <Badge color="danger" content={5} shape="circle">
+                      <Bell />
+                    </Badge>
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu aria-label="Static Actions">
+                  {messageItems.map((item, index) => (
+                    <DropdownItem
+                      key={index}
+                      description={item.description}
+                      startContent={<BellRing />}
+                      className="text-ellipsis"
+                    >
+                      {item.title}
+                    </DropdownItem>
+                  ))}
+                </DropdownMenu>
+              </Dropdown>
+            </NavbarItem>
+            <NavbarItem>
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+                  router.push("/chat");
+                }}
+                className="text-md  bg-transparent p-0 m-0"
+              >
+                <Badge color="danger" content={5} shape="circle">
+                  {/* <NotificationIcon size={24} /> */}
+                  <MessageCircle />
+                </Badge>
+              </Button>
+            </NavbarItem>
+          </div>
         ) : null}
         <NavbarItem className="z-100">
           <DynamicNavbar />
